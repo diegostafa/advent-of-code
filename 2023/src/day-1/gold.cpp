@@ -1,5 +1,6 @@
 #include "../../utils/aoc-utils.cpp"
-#include "unordered_map"
+#include <ranges>
+#include <unordered_map>
 
 std::unordered_map<std::string, int> stringToNum = {
     {"one", 1},
@@ -57,11 +58,9 @@ get_number(const std::string& s)
 int
 main()
 {
-    auto lines   = read_file_lines("src/day-1/input.txt");
-    auto numbers = map_vector<std::string, int>(lines, get_number);
-    auto sum     = 0;
+    auto sum = 0;
 
-    for (auto&& n : numbers)
+    for (auto&& n : aoc_utils::read_file_lines("src/day-1/input.txt") | std::views::transform(get_number))
         sum += n;
 
     std::cout << sum << std::endl;

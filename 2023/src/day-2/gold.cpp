@@ -1,4 +1,5 @@
 #include "../../utils/aoc-utils.cpp"
+#include <ranges>
 #include <unordered_map>
 
 int
@@ -10,14 +11,14 @@ tot_min_rgb(const std::vector<std::string>& sets)
         {"blue", 0},
     };
 
-    auto split_set_values = [](auto s)
-    { return split_string(s, ", "); };
+    auto split_set_values = [](const auto& s)
+    { return aoc_utils::split_string(s, ", "); };
 
-    auto split_value_color = [](auto s)
-    { return split_string(s, " "); };
+    auto split_value_color = [](const auto& s)
+    { return aoc_utils::split_string(s, " "); };
 
-    for (auto&& setPair : map_vector<std::string, std::vector<std::string>>(sets, split_set_values))
-        for (auto&& valAndColor : map_vector<std::string, std::vector<std::string>>(setPair, split_value_color))
+    for (auto&& setPair : std::views::transform(sets, split_set_values))
+        for (auto&& valAndColor : std::views::transform(setPair, split_value_color))
         {
             auto  val    = atoi(valAndColor[0].c_str());
             auto& minVal = colorToMin[valAndColor[1]];
@@ -32,14 +33,15 @@ tot_min_rgb(const std::vector<std::string>& sets)
 int
 main()
 {
-    auto split_sets = [](auto s)
-    { return split_string(split_string(s, ": ")[1], "; "); };
+    auto split_sets = [](const auto& s)
+    { return aoc_utils::split_string(aoc_utils::split_string(s, ": ")[1], "; "); };
 
-    auto lines       = read_file_lines("src/day-2/input.txt");
-    auto linesSets   = map_vector<std::string, std::vector<std::string>>(lines, split_sets);
-    auto linesMinRgb = map_vector<std::vector<std::string>, int>(linesSets, tot_min_rgb);
-    auto sum         = 0;
+    auto linesMinRgb =
+        aoc_utils::read_file_lines("src/day-2/input.txt") |
+        std::views::transform(split_sets) |
+        std::views::transform(tot_min_rgb);
 
+    auto sum = 0;
     for (auto&& v : linesMinRgb)
         sum += v;
 

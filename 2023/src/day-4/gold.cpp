@@ -4,10 +4,10 @@
 int
 main()
 {
-    auto split_sets = [](std::string s)
+    auto split_sets = [](const auto& s)
     { return aoc_utils::split_string(aoc_utils::split_string(s, ": ")[1], " | "); };
 
-    auto split_numbers = [](std::vector<std::string> v)
+    auto split_numbers = [](const auto& v)
     {
         auto sx = aoc_utils::split_string(v[0], " ");
         auto dx = aoc_utils::split_string(v[1], " ");
@@ -29,9 +29,10 @@ main()
         return std::make_pair(vsx, vdx);
     };
 
-    auto games = aoc_utils::read_file_lines("src/day-4/input.txt") |
-                 std::views::transform(split_sets) |
-                 std::views::transform(split_numbers);
+    auto games =
+        aoc_utils::read_file_lines("src/day-4/input.txt") |
+        std::views::transform(split_sets) |
+        std::views::transform(split_numbers);
 
     std::vector<int> matches(games.size());
     std::vector<int> copies(games.size(), 1);

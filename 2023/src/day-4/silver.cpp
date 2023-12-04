@@ -5,10 +5,10 @@
 int
 main()
 {
-    auto split_sets = [](std::string s)
+    auto split_sets = [](const auto& s)
     { return aoc_utils::split_string(aoc_utils::split_string(s, ": ")[1], " | "); };
 
-    auto split_numbers = [](std::vector<std::string> v)
+    auto split_numbers = [](const auto& v)
     {
         auto sx = aoc_utils::split_string(v[0], " ");
         auto dx = aoc_utils::split_string(v[1], " ");

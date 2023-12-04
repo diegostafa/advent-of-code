@@ -3,7 +3,7 @@
 #include <tuple>
 
 std::pair<int, int>
-is_symbol_adjacent(const std::vector<std::string>& grid, int i, int j, int len)
+get_gear_pos(const std::vector<std::string>& grid, int i, int j, int len)
 {
     auto check_symbol = [](char c)
     { return !isdigit(c) && c != '.'; };
@@ -52,7 +52,7 @@ nums_and_gears(const std::vector<std::string>& grid)
                         break;
                 }
 
-                auto posgear = is_symbol_adjacent(grid, i, j, dig.length());
+                auto posgear = get_gear_pos(grid, i, j, dig.length());
                 if (posgear.first != -1)
                     numsAndGears.push_back({atoi(dig.c_str()), posgear});
 

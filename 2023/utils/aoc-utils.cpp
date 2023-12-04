@@ -8,6 +8,19 @@
 
 namespace aoc_utils
 {
+
+    template <typename A, typename B>
+    std::vector<B>
+    map_vector(const std::vector<A>& in, const std::function<B(A)> f)
+    {
+        std::vector<B> out;
+
+        for (auto&& a : in)
+            out.push_back(f(a));
+
+        return out;
+    }
+
     std::vector<std::string>
     split_string(const std::string& str, const std::string& delimiter)
     {

@@ -60,7 +60,7 @@ main()
 {
     auto sum = 0;
 
-    for (auto&& n : aoc_utils::read_file_lines("src/day-1/input.txt") | std::views::transform(get_number))
+    for (auto&& n : aoc_utils::read_file_lines("src/day-01/input.txt") | std::views::transform(get_number))
         sum += n;
 
     std::cout << sum << std::endl;

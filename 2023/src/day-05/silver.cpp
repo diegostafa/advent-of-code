@@ -20,7 +20,7 @@ auto parse_block = [](const auto& s)
 int
 main()
 {
-    auto input = aoc_utils::split_string(aoc_utils::read_file("src/day-5/input.txt"), "\n\n");
+    auto input = aoc_utils::split_string(aoc_utils::read_file("src/day-05/input.txt"), "\n\n");
     auto seeds = parse_line(split_line(input[0])[1]);
     auto maps  = input | std::views::drop(1) | std::views::transform(parse_block);
 

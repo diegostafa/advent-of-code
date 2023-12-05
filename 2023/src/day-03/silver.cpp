@@ -65,6 +65,6 @@ adjacent_sum(const std::vector<std::string>& grid)
 int
 main()
 {
-    auto grid = aoc_utils::read_file_lines("src/day-3/input.txt");
+    auto grid = aoc_utils::read_file_lines("src/day-03/input.txt");
     std::cout << adjacent_sum(grid) << std::endl;
 }

@@ -1,5 +1,4 @@
 #include "../../utils/aoc-utils.cpp"
-#include <math.h>
 #include <ranges>
 
 int
@@ -31,11 +30,12 @@ main()
     };
 
     auto games =
-        aoc_utils::read_file_lines("src/day-4/input.txt") |
+        aoc_utils::read_file_lines("src/day-04/input.txt") |
         std::views::transform(split_sets) |
         std::views::transform(split_numbers);
 
     std::vector<int> matches(games.size());
+    std::vector<int> copies(games.size(), 1);
 
     for (int i = 0; i < games.size(); ++i)
         for (auto&& hand_val : games[i].second)
@@ -43,9 +43,13 @@ main()
                 if (hand_val == win_val)
                     matches[i]++;
 
+    for (int i = 0; i < matches.size(); ++i)
+        for (int j = 1; j <= matches[i]; ++j)
+            copies[i + j] += copies[i];
+
     int sum = 0;
-    for (auto&& m : matches)
-        sum += std::pow(2, m - 1);
+    for (auto&& c : copies)
+        sum += c;
 
     std::cout << sum << std::endl;
 }

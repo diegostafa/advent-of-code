@@ -2,6 +2,7 @@
 #include <functional>
 #include <iostream>
 #include <iterator>
+#include <ranges>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -40,5 +41,12 @@ namespace aoc_utils
             lines.push_back(line);
 
         return lines;
+    }
+
+    std::string
+    read_file(const std::string& path)
+    {
+        std::ifstream ifs(path);
+        return std::string((std::istreambuf_iterator<char>(ifs)), (std::istreambuf_iterator<char>()));
     }
 }

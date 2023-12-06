@@ -11,7 +11,7 @@ let rec scrollWindow currPos windowSize (stream: char list) =
         | _ -> scrollWindow (currPos + 1) windowSize xs
 
 let silver =
-    printfn "Result: %A" (File.ReadAllText("input/day-06/input.txt") |> Seq.toList |> scrollWindow 0 4)
+    printfn "Result: %A" (File.ReadAllText("../../input/day-06/input.txt") |> Seq.toList |> scrollWindow 0 4)
 
 let gold =
-    printfn "Result: %A" (File.ReadAllText("input/day-06/input.txt") |> Seq.toList |> scrollWindow 0 14)
+    printfn "Result: %A" (File.ReadAllText("../../input/day-06/input.txt") |> Seq.toList |> scrollWindow 0 14)

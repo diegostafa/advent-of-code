@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
-    <RootNamespace>day_8</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>day_08</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

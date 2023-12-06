@@ -33,7 +33,7 @@ let moveValueGold (x, y) =
 let silver =
     printfn
         "Result: %A"
-        (File.ReadAllText("input/day-02/input.txt").Split("\n")
+        (File.ReadAllText("../../input/day-02/input.txt").Split("\n")
          |> Seq.map toPair
          |> Seq.map moveValueSilver
          |> Seq.sum)
@@ -41,7 +41,7 @@ let silver =
 let gold =
     printfn
         "Result: %A"
-        (File.ReadAllText("input/day-02/input.txt").Split("\n")
+        (File.ReadAllText("../../input/day-02/input.txt").Split("\n")
          |> Seq.map toPair
          |> Seq.map moveValueGold
          |> Seq.sum)

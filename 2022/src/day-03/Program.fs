@@ -24,7 +24,7 @@ let foldMatchGold state curr =
 let silver =
     printfn
         "Total value is: %i"
-        (File.ReadAllText("input/day-03/input.txt").Split("\n")
+        (File.ReadAllText("../../input/day-03/input.txt").Split("\n")
          |> Seq.map (fun str -> (str.[.. (str.Length / 2 - 1)], str.[str.Length / 2 ..]))
          |> Seq.fold foldMatchSilver []
          |> Seq.fold (fun state c -> state + (valueOf c)) 0)
@@ -32,7 +32,7 @@ let silver =
 let gold =
     printfn
         "Result: %i"
-        (File.ReadAllText("input/day-03/input.txt").Split("\n")
+        (File.ReadAllText("../../input/day-03/input.txt").Split("\n")
          |> Array.toList
          |> List.chunkBySize 3
          |> List.fold foldMatchGold []

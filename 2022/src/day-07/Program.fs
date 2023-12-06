@@ -8,7 +8,7 @@ let input =
         | any :: _ -> any
         | _ -> line
 
-    File.ReadAllText("input/day-07/input.txt").Split("\n")
+    File.ReadAllText("../../input/day-07/input.txt").Split("\n")
     |> Seq.rev
     |> Seq.map remFileNames
     |> Seq.toList

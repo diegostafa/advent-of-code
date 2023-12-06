@@ -17,13 +17,13 @@ let foldContained state curr =
 let silver =
     printfn
         "Result: %A"
-        (File.ReadAllText("input/day-04/input.txt").Split("\n")
+        (File.ReadAllText("../../input/day-04/input.txt").Split("\n")
          |> Seq.map toPairs
          |> Seq.fold foldContained 0)
 
 let gold =
     printfn
         "Result: %A"
-        (File.ReadAllText("input/day-04/input.txt").Split("\n")
+        (File.ReadAllText("../../input/day-04/input.txt").Split("\n")
          |> Seq.map toPairs
          |> Seq.fold foldContained 0)

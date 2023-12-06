@@ -65,7 +65,7 @@ let move (knots, grid) ((dirx, diry), steps) =
 
 let silver =
     match
-        File.ReadAllText("input/day-09/input.txt").Split("\n")
+        File.ReadAllText("../../input/day-09/input.txt").Split("\n")
         |> Seq.toList
         |> List.map toPair
         |> List.fold move ((List.replicate 2 (0, 0)), (updateStepCount Map.empty (0, 0)))
@@ -74,7 +74,7 @@ let silver =
 
 let gold =
     match
-        File.ReadAllText("input/day-09/input.txt").Split("\n")
+        File.ReadAllText("../../input/day-09/input.txt").Split("\n")
         |> Seq.toList
         |> List.map toPair
         |> List.fold move ((List.replicate 10 (0, 0)), (updateStepCount Map.empty (0, 0)))

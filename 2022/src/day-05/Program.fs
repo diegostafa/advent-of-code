@@ -34,7 +34,7 @@ let execMoveGold (craneArr: (char list) array) qnt fromIndex destIndex =
         res
 
 let silver =
-    let parts = File.ReadAllText("input/day-05/input.txt").Split("\n\n")
+    let parts = File.ReadAllText("../../input/day-05/input.txt").Split("\n\n")
     let rawMoves = parts[ 1 ].Split("\n") |> Array.toList
     let rawCranes = (parts[ 0 ].Split("\n") |> Array.toList)
     let moves = List.map (fun (str: string) -> str.Split(" ") |> Array.toList) rawMoves
@@ -53,7 +53,7 @@ let silver =
     )
 
 let gold =
-    let parts = File.ReadAllText("input/day-05/input.txt").Split("\n\n")
+    let parts = File.ReadAllText("../../input/day-05/input.txt").Split("\n\n")
     let rawMoves = parts[ 1 ].Split("\n") |> Array.toList
     let rawCranes = (parts[ 0 ].Split("\n") |> Array.toList)
     let moves = List.map (fun (str: string) -> str.Split(" ") |> Array.toList) rawMoves

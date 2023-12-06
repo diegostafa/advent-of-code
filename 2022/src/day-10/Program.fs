@@ -17,7 +17,7 @@ let evalProg (regCycles: int list, regVal) (cmd: Cmd) =
 
 let silver =
     let regHist, _ =
-        File.ReadAllText("input/day-10/input.txt").Split("\n")
+        File.ReadAllText("../../input/day-10/input.txt").Split("\n")
         |> Array.toList
         |> List.collect parseCmd
         |> List.fold evalProg ([ 1 ], 1)
@@ -26,7 +26,7 @@ let silver =
 
 let gold =
     let regHist, _ =
-        File.ReadAllText("input/day-10/input.txt").Split("\n")
+        File.ReadAllText("../../input/day-10/input.txt").Split("\n")
         |> Array.toList
         |> List.collect parseCmd
         |> List.fold evalProg ([ 1 ], 1)

@@ -77,7 +77,7 @@ let rec cmpPackets p1 p2 =
 let silver =
     printfn
         "Result: %A"
-        (File.ReadAllText("input/day-13/input.txt").Split("\n\n")
+        (File.ReadAllText("../../input/day-13/input.txt").Split("\n\n")
          |> Array.toList
          |> List.map toPair
          |> List.map (fun (x, y) -> (toPacket x, toPacket y))
@@ -89,7 +89,7 @@ let gold =
     let decs = [ Packet([ Packet([ Data(2) ]) ]); Packet([ Packet([ Data(6) ]) ]) ]
 
     let inp =
-        File.ReadAllText("input/day-13/input.txt").Replace("\n\n", "\n").Split("\n")
+        File.ReadAllText("../../input/day-13/input.txt").Replace("\n\n", "\n").Split("\n")
         |> Array.toList
         |> List.map toPacket
         |> List.append decs

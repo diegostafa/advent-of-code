@@ -12,7 +12,7 @@ main()
     auto parse_line = [](const auto& s)
     { return split_space(s) | std::views::drop(1) | std::views::transform(to_num); };
 
-    auto input     = aoc_utils::read_file_lines("src/day-06/input.txt") | std::views::transform(parse_line);
+    auto input     = aoc_utils::read_file_lines("input/day-06/input.txt") | std::views::transform(parse_line);
     auto times     = input[0];
     auto distances = input[1];
 

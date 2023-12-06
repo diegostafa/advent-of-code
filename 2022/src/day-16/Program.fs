@@ -15,7 +15,7 @@ let valves =
         | _ -> failwith "INVALID INPUT"
 
     File
-        .ReadAllText("input/day-16/input.txt")
+        .ReadAllText("../../input/day-16/input.txt")
         .Replace("Valve ", "")
         .Replace(" has flow rate=", ",")
         .Replace("; tunnels lead to valves ", ",")

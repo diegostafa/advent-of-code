@@ -8,7 +8,7 @@ let input =
         (int a[0], int a[1]), (int a[2], int a[3])
 
     File
-        .ReadAllText("input")
+        .ReadAllText("input/day-15/input.txt")
         .Replace("Sensor at x=", "")
         .Replace(" y=", "")
         .Replace(": closest beacon is at x=", ",")

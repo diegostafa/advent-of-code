@@ -11,7 +11,7 @@ let rockss =
         let a = str.Split(",")
         (int a[1], int a[0])
 
-    File.ReadAllText("input").Split("\n")
+    File.ReadAllText("input/day-14/input.txt").Split("\n")
     |> Array.toList
     |> List.map (fun (l: string) -> l.Split(" -> ") |> Array.toList)
     |> List.map (List.map toPair)

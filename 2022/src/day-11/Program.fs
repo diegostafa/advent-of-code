@@ -71,7 +71,7 @@ let evalOp exp var =
     | Div(a, b) -> (replace a var) / (replace b var)
 
 let silver =
-    let ms = File.ReadAllText("input").Split("\n\n") |> Array.map parseMonke
+    let ms = File.ReadAllText("input/day-11/input.txt").Split("\n\n") |> Array.map parseMonke
     let mutable im = Array.fold (fun map m -> Map.add m.id 0 map) Map.empty ms
     let intz = int64 0
 
@@ -94,7 +94,7 @@ let silver =
 
 
 let gold =
-    let ms = File.ReadAllText("input").Split("\n\n") |> Array.map parseMonke
+    let ms = File.ReadAllText("input/day-11/input.txt").Split("\n\n") |> Array.map parseMonke
 
     let lcm =
         Array.map (fun m -> m.divBy) ms |> Array.fold (fun prod d -> prod * d) (int64 1)

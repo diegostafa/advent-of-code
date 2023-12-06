@@ -6,14 +6,14 @@ let sumCals (strBlock:string) =
 let silver =
     printfn
         "Result: %A"
-        (File.ReadAllText("input").Split("\n\n")
+        (File.ReadAllText("input/day-01/input.txt").Split("\n\n")
             |> Seq.map sumCals
             |> Seq.max)
 
 let gold =
     printfn
         "Result: %A"
-        (File.ReadAllText("input").Split("\n\n")
+        (File.ReadAllText("input/day-01/input.txt").Split("\n\n")
             |> Seq.map sumCals
             |> Seq.sortDescending
             |> Seq.take 3

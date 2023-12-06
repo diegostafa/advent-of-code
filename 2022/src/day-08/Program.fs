@@ -20,7 +20,7 @@ let viewingDistance (x, y) (grid: char[,]) =
     * (fst (Array.fold countVisibleTrees (0, false) (Array.rev grid[x, .. (y - 1)])))
 
 let silver =
-    let arr2d = File.ReadAllText("input").Split("\n") |> Array.map Seq.toArray
+    let arr2d = File.ReadAllText("input/day-08/input.txt").Split("\n") |> Array.map Seq.toArray
     let grid = Array2D.init arr2d.Length arr2d[0].Length (fun x y -> arr2d[x][y])
     let mutable vis = Array2D.length1 grid * 2 + (Array2D.length2 grid - 2) * 2
 
@@ -32,7 +32,7 @@ let silver =
     printfn "Result: %A" vis
 
 let gold =
-    let arr2d = File.ReadAllText("input").Split("\n") |> Array.map Seq.toArray
+    let arr2d = File.ReadAllText("input/day-08/input.txt").Split("\n") |> Array.map Seq.toArray
     let grid = Array2D.init arr2d.Length arr2d[0].Length (fun x y -> arr2d[x][y])
     let mutable (viewDists: int list) = []
 

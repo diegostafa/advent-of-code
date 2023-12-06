@@ -1,6 +1,6 @@
 ﻿open System.IO
 
-let arr = File.ReadAllText("input").Split("\n") |> Array.map Seq.toArray
+let arr = File.ReadAllText("input/day-12/input.txt").Split("\n") |> Array.map Seq.toArray
 let grid = Array2D.init arr.Length arr[0].Length (fun x y -> arr[x][y])
 let maxCost = 99999999
 

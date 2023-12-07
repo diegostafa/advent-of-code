@@ -1,16 +1,10 @@
 #include "../../utils/aoc-utils.cpp"
 
-auto split_space = [](const auto& s)
-{ return aoc_utils::split_string(s, " "); };
-
-auto to_num = [](const auto& s)
-{ return (int64_t)std::stoll((s.c_str())); };
-
 int
 main()
 {
     auto parse_line = [](const auto& s)
-    { return split_space(s) | std::views::drop(1) | std::views::transform(to_num); };
+    { return aoc_utils::split_space(s) | std::views::drop(1) | std::views::transform(aoc_utils::to_int64); };
 
     auto input     = aoc_utils::read_file_lines("input/day-06/input.txt") | std::views::transform(parse_line);
     auto times     = input[0];

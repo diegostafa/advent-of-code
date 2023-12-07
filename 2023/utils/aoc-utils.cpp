@@ -49,4 +49,16 @@ namespace aoc_utils
         std::ifstream ifs(path);
         return std::string((std::istreambuf_iterator<char>(ifs)), (std::istreambuf_iterator<char>()));
     }
+
+    auto split_space = [](const auto& s)
+    { return aoc_utils::split_string(s, " "); };
+
+    auto split_line = [](const auto& s)
+    { return aoc_utils::split_string(s, "\n"); };
+
+    auto to_int = [](const auto& s)
+    { return atoi(s.c_str()); };
+
+    auto to_int64 = [](const auto& s)
+    { return (int64_t)std::stoll((s.c_str())); };
 }

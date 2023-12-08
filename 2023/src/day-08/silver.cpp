@@ -9,8 +9,8 @@ main()
     auto parse_line = [&idToNext](const auto& s)
     {
         auto split = aoc_utils::split_string(s, " = ");
-        auto id    = split[0];
         auto rest  = aoc_utils::split_string(split[1], ", ");
+        auto id    = split[0];
         auto sx    = rest[0];
         auto dx    = rest[1];
 
@@ -29,7 +29,7 @@ main()
         int64_t iter        = 0;
         auto    pos         = start;
         auto    reset_steps = [&steps, &iter]()
-        {steps = 0; iter++; };
+        { steps = 0; iter++; };
 
         while (pos != "ZZZ")
         {

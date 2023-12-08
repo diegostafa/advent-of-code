@@ -31,7 +31,7 @@ main()
         int64_t iter        = 0;
         auto    pos         = start;
         auto    reset_steps = [&steps, &iter]()
-        {steps = 0; iter++; };
+        { steps = 0; iter++; };
 
         while (pos[pos.size() - 1] != 'Z')
         {

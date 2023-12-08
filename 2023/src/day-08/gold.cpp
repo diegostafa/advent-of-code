@@ -33,7 +33,7 @@ main()
         auto    reset_steps = [&steps, &iter]()
         { steps = 0; iter++; };
 
-        while (pos[pos.size() - 1] != 'Z')
+        while (pos.back() != 'Z')
         {
             if (steps == instructions.size())
                 reset_steps();
@@ -44,7 +44,7 @@ main()
 
     std::vector<std::string> starts;
     for (auto&& [k, v] : idToNext)
-        if (k[k.size() - 1] == 'A')
+        if (k.back() == 'A')
             starts.push_back(k);
 
     std::vector<int64_t> steps;

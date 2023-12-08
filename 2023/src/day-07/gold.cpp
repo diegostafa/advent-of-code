@@ -1,7 +1,4 @@
 #include "../../utils/aoc-utils.cpp"
-#include <algorithm>
-#include <string>
-#include <unordered_map>
 
 std::unordered_map<char, int> labelToValue{
     {'J', 1},

@@ -57,8 +57,8 @@ namespace aoc_utils
     { return aoc_utils::split_string(s, "\n"); };
 
     auto to_int = [](const auto& s)
-    { return atoi(s.c_str()); };
+    { return static_cast<int32_t>(atoi(s.c_str())); };
 
     auto to_int64 = [](const auto& s)
-    { return (int64_t)std::stoll((s.c_str())); };
+    { return static_cast<int64_t>(std::stoll(s.c_str())); };
 }

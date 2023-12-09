@@ -15,7 +15,7 @@ main()
         auto dx    = rest[1];
 
         sx.erase(sx.begin());
-        dx.erase(dx.end() - 1);
+        dx.pop_back();
         idToNext[id] = {sx, dx};
     };
 
@@ -25,10 +25,10 @@ main()
 
     auto follow_map = [&idToNext, &instructions](const std::string& start)
     {
-        int64_t steps       = 0;
-        int64_t iter        = 0;
-        auto    pos         = start;
-        auto    reset_steps = [&steps, &iter]()
+        int  steps       = 0;
+        int  iter        = 0;
+        auto pos         = start;
+        auto reset_steps = [&steps, &iter]()
         { steps = 0; iter++; };
 
         while (pos != "ZZZ")

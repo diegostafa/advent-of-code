@@ -6,6 +6,6 @@ clean:
 	rm -r $(buildDir)
 
 run:
-	@mkdir $(buildDir)
+	@mkdir -p $(buildDir)
 	@g++ $(flags) src/day-$(day)/$(part).cpp -o $(buildDir)/$(exe)
 	@./$(buildDir)/$(exe)

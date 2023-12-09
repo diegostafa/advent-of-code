@@ -1,10 +1,18 @@
 #include "../../utils/aoc-utils.cpp"
+#include <numeric>
 
 int
 main()
 {
     auto parse_line = [](const auto& s)
-    { return aoc_utils::split_space(s) | std::views::transform(aoc_utils::to_int64); };
+    {
+        auto nums = aoc_utils::split_space(s);
+
+        std::vector<int64_t> res;
+        for (auto&& n : nums)
+            res.push_back(aoc_utils::to_int64(n));
+        return res;
+    };
 
     auto input = aoc_utils::read_file_lines("input/day-09/input.txt") | std::views::transform(parse_line);
 
@@ -30,23 +38,15 @@ main()
             return true;
         };
 
-        auto to_vec = [](const auto& l)
-        {
-            std::vector<int64_t> res;
-            for (auto&& e : l)
-                res.push_back(e);
-            return res;
-        };
+        std::vector<std::vector<int64_t>> pyramid;
+        pyramid.push_back(line);
 
-        std::vector<std::vector<int64_t>> finalPyramid;
-        finalPyramid.push_back(to_vec(line));
-
-        while (!vec_all_zero(finalPyramid.back()))
-            finalPyramid.push_back(compute_next_layer(finalPyramid.back()));
+        while (!vec_all_zero(pyramid.back()))
+            pyramid.push_back(compute_next_layer(pyramid.back()));
 
         int tempSum = 0;
-        for (int i = finalPyramid.size() - 1; i >= 1; i--)
-            tempSum += finalPyramid[i - 1].back();
+        for (int i = pyramid.size() - 1; i >= 1; i--)
+            tempSum += pyramid[i - 1].back();
 
         return tempSum;
     };

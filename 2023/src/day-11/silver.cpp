@@ -5,21 +5,12 @@ find_empty_rows_cols(const auto& grid)
 {
     std::pair<std::vector<int>, std::vector<int>> res;
 
-    for (int i = 0; i < grid.size(); i++)
-    {
-        bool isEmpty = true;
-        for (int j = 0; j < grid[0].size(); j++)
-        {
-            if (grid[i][j] == '#')
-            {
-                isEmpty = false;
-                break;
-            }
-        }
+    auto isGalaxy = [](const auto& c)
+    { return c == '#'; };
 
-        if (isEmpty)
+    for (int i = 0; i < grid.size(); i++)
+        if (!std::any_of(grid[i].begin(), grid[i].end(), isGalaxy))
             res.first.push_back(i);
-    }
 
     for (int j = 0; j < grid[0].size(); j++)
     {

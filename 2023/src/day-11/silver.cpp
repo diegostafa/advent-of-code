@@ -34,10 +34,8 @@ int
 main()
 {
 
-    auto grid             = aoc_utils::read_file_lines("input/day-11/input.txt");
-    auto emptyRowsAndCols = find_empty_rows_cols(grid);
-    auto emptyRows        = emptyRowsAndCols.first;
-    auto emptyCols        = emptyRowsAndCols.second;
+    auto grid                   = aoc_utils::read_file_lines("input/day-11/input.txt");
+    auto [emptyRows, emptyCols] = find_empty_rows_cols(grid);
 
     auto tot_pair_distance = [&](const auto& start)
     {

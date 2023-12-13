@@ -1,4 +1,5 @@
 .vscode/
-input/
 build/
 *.out
+templates/
+src/**/input.txt

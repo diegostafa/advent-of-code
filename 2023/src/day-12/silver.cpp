@@ -104,7 +104,7 @@ main()
         return std::make_tuple(springs, unknowns, constraints, maxDmg);
     };
 
-    auto input = aoc_utils::read_file_lines("input/day-12/input.txt") | std::views::transform(parse_line);
+    auto input = aoc_utils::read_file_lines("src/day-12/input.txt") | std::views::transform(parse_line);
 
     int sum = 0;
     for (auto&& [springs, unknowns, constraints, maxDmg] : input)

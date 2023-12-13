@@ -60,7 +60,7 @@ main()
         return std::make_pair(split[0], aoc_utils::to_int(split[1]));
     };
 
-    auto input = aoc_utils::read_file_lines("input/day-07/input.txt") | std::views::transform(parse_line);
+    auto input = aoc_utils::read_file_lines("src/day-07/input.txt") | std::views::transform(parse_line);
 
     std::vector<std::pair<std::string, int>> vec;
     for (auto&& e : input)

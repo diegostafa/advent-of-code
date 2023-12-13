@@ -32,7 +32,7 @@ main()
     { return aoc_utils::split_string(aoc_utils::split_string(s, ": ")[1], "; "); };
 
     auto validSets =
-        aoc_utils::read_file_lines("input/day-02/input.txt") |
+        aoc_utils::read_file_lines("src/day-02/input.txt") |
         std::views::transform(split_sets) |
         std::views::transform(is_valid_set);
 

@@ -31,7 +31,7 @@ main()
     };
 
     auto games =
-        aoc_utils::read_file_lines("input/day-04/input.txt") |
+        aoc_utils::read_file_lines("src/day-04/input.txt") |
         std::views::transform(split_sets) |
         std::views::transform(split_numbers);
 

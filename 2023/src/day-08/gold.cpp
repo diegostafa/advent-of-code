@@ -21,7 +21,7 @@ main()
         idToNext[id] = {sx, dx};
     };
 
-    auto input        = aoc_utils::read_file_lines("input/day-08/input.txt");
+    auto input        = aoc_utils::read_file_lines("src/day-08/input.txt");
     auto instructions = input[0];
     std::for_each(input.begin() + 2, input.end(), parse_line);
 

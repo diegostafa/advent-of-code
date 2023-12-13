@@ -14,7 +14,7 @@ main()
         return res;
     };
 
-    auto input = aoc_utils::read_file_lines("input/day-09/input.txt") | std::views::transform(parse_line);
+    auto input = aoc_utils::read_file_lines("src/day-09/input.txt") | std::views::transform(parse_line);
 
     auto extrapolate_value = [](const auto& line)
     {

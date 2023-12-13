@@ -127,7 +127,7 @@ flood(auto& trail, const std::pair<int, int>& start)
 int
 main()
 {
-    auto grid = aoc_utils::read_file_lines("input/day-10/input.txt");
+    auto grid = aoc_utils::read_file_lines("src/day-10/input.txt");
 
     for (int i = 0; i < grid.size(); i++)
         for (int j = 0; j < grid[i].size(); j++)

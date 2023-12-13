@@ -32,7 +32,7 @@ map_range_to_vec(const auto& maps)
 int
 main()
 {
-    auto input = aoc_utils::split_string(aoc_utils::read_file("input/day-05/input.txt"), "\n\n");
+    auto input = aoc_utils::split_string(aoc_utils::read_file("src/day-05/input.txt"), "\n\n");
     auto seeds = parse_line(aoc_utils::split_line(input[0])[1]);
     auto maps  = map_range_to_vec(input | std::views::drop(1) | std::views::transform(parse_block));
 

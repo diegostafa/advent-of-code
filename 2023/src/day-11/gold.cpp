@@ -34,7 +34,7 @@ int
 main()
 {
 
-    auto grid                   = aoc_utils::read_file_lines("input/day-11/input.txt");
+    auto grid                   = aoc_utils::read_file_lines("src/day-11/input.txt");
     auto [emptyRows, emptyCols] = find_empty_rows_cols(grid);
     auto expansionSize          = 1000000 - 1;
 

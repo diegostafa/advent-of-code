@@ -68,7 +68,7 @@ nums_and_gears(const std::vector<std::string>& grid)
 int
 main()
 {
-    auto grid = aoc_utils::read_file_lines("input/day-03/input.txt");
+    auto grid = aoc_utils::read_file_lines("src/day-03/input.txt");
     auto ngs  = nums_and_gears(grid);
 
     int64_t sum = 0;

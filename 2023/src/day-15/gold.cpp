@@ -1,6 +1,5 @@
 #include "../../utils/aoc-utils.cpp"
 #include <array>
-#include <deque>
 
 auto
 hash(const auto& str)

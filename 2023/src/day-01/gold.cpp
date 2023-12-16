@@ -1,4 +1,5 @@
 #include "../../utils/aoc-utils.cpp"
+#include <numeric>
 #include <ranges>
 #include <unordered_map>
 
@@ -58,10 +59,6 @@ get_number(const std::string& s)
 int
 main()
 {
-    auto sum = 0;
-
-    for (auto&& n : aoc_utils::read_file_lines("src/day-01/input.txt") | std::views::transform(get_number))
-        sum += n;
-
-    std::cout << sum << std::endl;
+    auto numbers = aoc_utils::read_file_lines("src/day-01/input.txt") | std::views::transform(get_number);
+    std::cout << std::accumulate(numbers.begin(), numbers.end(), 0) << std::endl;
 }

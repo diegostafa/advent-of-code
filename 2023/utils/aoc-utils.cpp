@@ -9,6 +9,13 @@
 
 namespace aoc_utils
 {
+    bool
+    in_bound(const auto& grid, const auto& pos)
+    {
+        auto [x, y] = pos;
+        return x >= 0 && x < grid.size() && y >= 0 && y < grid[0].size();
+    }
+
     std::vector<std::string>
     split_string(const std::string& str, const std::string& delimiter)
     {

@@ -98,24 +98,22 @@ flood(auto& trail, const std::pair<int, int>& start)
     if (illegalPosition(start))
         return;
 
-    std::vector<std::pair<int, int>> wave;
-
+    auto wave = std::vector<std::pair<int, int>>();
+    auto i    = 0;
     wave.reserve(trail.size() * 2);
     wave.push_back(start);
-    int i = 0;
 
     while (i < wave.size())
     {
-        auto curr = wave[i];
-
-        trail[curr.first][curr.second] = true;
-
-        std::vector<std::pair<int, int>> nextPos = {
+        auto curr    = wave[i];
+        auto nextPos = std::vector<std::pair<int, int>>{
             {curr.first, curr.second + 1},
             {curr.first, curr.second - 1},
             {curr.first + 1, curr.second},
             {curr.first - 1, curr.second},
         };
+
+        trail[curr.first][curr.second] = true;
 
         for (auto&& next : nextPos)
             if (!illegalPosition(next) && std::find(wave.begin(), wave.end(), next) == wave.end())
@@ -134,8 +132,7 @@ main()
             if (grid[i][j] == 'S')
                 start = {i, j};
 
-    std::vector<std::vector<bool>> visited(grid.size(), std::vector<bool>(grid[0].size()));
-
+    auto visited      = std::vector<std::vector<bool>>(grid.size(), std::vector<bool>(grid[0].size()));
     auto sizeAndTrail = maxLoopSizeAndTrail(grid, start, visited, 0);
     auto trail        = sizeAndTrail.second;
 

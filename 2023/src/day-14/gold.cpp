@@ -103,7 +103,7 @@ main()
 
     auto compute_load = [](const auto& grid)
     {
-        int load = 0;
+        auto load = 0;
         for (int i = 0; i < grid.size(); i++)
             for (int j = 0; j < grid[0].size(); j++)
                 if (grid[i][j] == 'O')
@@ -111,9 +111,9 @@ main()
         return load;
     };
 
-    std::unordered_map<std::vector<std::string>, int> slid;
+    auto slid      = std::unordered_map<std::vector<std::string>, int>();
+    auto totCycles = 1000000000;
 
-    int totCycles = 1000000000;
     for (int i = 0; i < totCycles; i++)
     {
         slid[grid] = i;

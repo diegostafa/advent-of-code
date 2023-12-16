@@ -3,7 +3,7 @@
 auto
 find_empty_rows_cols(const auto& grid)
 {
-    std::pair<std::vector<int>, std::vector<int>> res;
+    auto res = std::pair<std::vector<int>, std::vector<int>>();
 
     auto isGalaxy = [](const auto& c)
     { return c == '#'; };

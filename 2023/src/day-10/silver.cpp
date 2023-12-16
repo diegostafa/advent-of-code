@@ -48,7 +48,7 @@ maxLoopSize(const auto& grid, const auto& curr, auto visited, int steps)
 
     visited[curr.first][curr.second] = true;
 
-    std::vector<std::pair<int, int>> nextPos = {
+    auto nextPos = std::vector<std::pair<int, int>>{
         {curr.first, curr.second + 1},
         {curr.first, curr.second - 1},
         {curr.first + 1, curr.second},
@@ -66,13 +66,13 @@ maxLoopSize(const auto& grid, const auto& curr, auto visited, int steps)
 int
 main()
 {
-    auto grid = aoc_utils::read_file_lines("src/day-10/input.txt");
+    auto grid    = aoc_utils::read_file_lines("src/day-10/input.txt");
+    auto visited = std::vector<std::vector<bool>>(grid.size(), std::vector<bool>(grid[0].size()));
 
     for (int i = 0; i < grid.size(); i++)
         for (int j = 0; j < grid[i].size(); j++)
             if (grid[i][j] == 'S')
                 start = {i, j};
 
-    std::vector<std::vector<bool>> visited(grid.size(), std::vector<bool>(grid[0].size()));
     std::cout << maxLoopSize(grid, start, visited, 0) / 2 << std::endl;
 }

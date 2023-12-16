@@ -22,7 +22,7 @@ hand_value(const std::string& s)
     auto cmp_labels = [](auto p1, auto p2)
     { return p1.second < p2.second; };
 
-    std::unordered_map<char, int> labelToFreq;
+    auto labelToFreq = std::unordered_map<char, int>();
 
     for (auto&& c : s)
         labelToFreq[c]++;
@@ -61,8 +61,8 @@ main()
     };
 
     auto input = aoc_utils::read_file_lines("src/day-07/input.txt") | std::views::transform(parse_line);
+    auto vec   = std::vector<std::pair<std::string, int>>();
 
-    std::vector<std::pair<std::string, int>> vec;
     for (auto&& e : input)
         vec.push_back(e);
     std::sort(vec.begin(), vec.end(), sort_hand);

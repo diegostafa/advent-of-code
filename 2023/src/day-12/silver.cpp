@@ -87,12 +87,11 @@ main()
 {
     auto parse_line = [](const auto& s)
     {
-        auto record  = aoc_utils::split_space(s);
-        auto springs = record[0];
-        auto dmgInfo = aoc_utils::split_string(record[1], ",");
-
-        std::vector<int> unknowns;
-        std::vector<int> constraints;
+        auto record      = aoc_utils::split_space(s);
+        auto springs     = record[0];
+        auto dmgInfo     = aoc_utils::split_string(record[1], ",");
+        auto unknowns    = std::vector<int>();
+        auto constraints = std::vector<int>();
 
         for (int i = 0; i < springs.size(); i++)
             if (springs[i] == '?')

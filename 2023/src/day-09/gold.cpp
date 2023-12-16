@@ -7,8 +7,8 @@ main()
     auto parse_line = [](const auto& s)
     {
         auto nums = aoc_utils::split_space(s);
+        auto res  = std::vector<int64_t>();
 
-        std::vector<int64_t> res;
         for (auto&& n : nums)
             res.push_back(aoc_utils::to_int64(n));
         return res;
@@ -38,7 +38,7 @@ main()
             return true;
         };
 
-        std::vector<std::vector<int64_t>> pyramid;
+        auto pyramid = std::vector<std::vector<int64_t>>();
         pyramid.push_back(line);
 
         while (!vec_all_zero(pyramid.back()))

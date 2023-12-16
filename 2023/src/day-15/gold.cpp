@@ -1,10 +1,10 @@
 #include "../../utils/aoc-utils.cpp"
 #include <array>
 
-auto
+int
 hash(const auto& str)
 {
-    int res = 0;
+    auto res = 0;
     for (auto&& c : str)
         res = ((res + c) * 17) % 256;
     return res;
@@ -47,15 +47,13 @@ main()
         return std::make_pair(parts[0], aoc_utils::to_int(parts[1]));
     };
 
-    auto input = aoc_utils::split_string(aoc_utils::read_file("src/day-15/input.txt"), ",") |
-                 std::views::transform(parse_line);
-
-    std::array<std::vector<std::pair<std::string, int>>, 256> boxes;
+    auto input = aoc_utils::split_string(aoc_utils::read_file("src/day-15/input.txt"), ",") | std::views::transform(parse_line);
+    auto boxes = std::array<std::vector<std::pair<std::string, int>>, 256>();
 
     for (auto&& [label, value] : input)
         set_focus(label, value, boxes);
 
-    int sum = 0;
+    auto sum = 0;
     for (int i = 0; i < boxes.size(); i++)
         for (int j = 0; j < boxes[i].size(); j++)
             sum += (i + 1) * (j + 1) * boxes[i][j].second;

@@ -38,7 +38,7 @@ main()
         return currPos;
     };
 
-    std::vector<int64_t> finalDest;
+    auto finalDest = std::vector<int64_t>();
     finalDest.reserve(seeds.size());
 
     for (auto&& s : seeds)

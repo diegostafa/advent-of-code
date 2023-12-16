@@ -6,8 +6,7 @@
 int
 main()
 {
-    std::unordered_map<std::string, std::pair<std::string, std::string>> idToNext;
-
+    auto idToNext   = std::unordered_map<std::string, std::pair<std::string, std::string>>();
     auto parse_line = [&idToNext](const auto& s)
     {
         auto split = aoc_utils::split_string(s, " = ");
@@ -42,12 +41,12 @@ main()
         return steps + steps * iter;
     };
 
-    std::vector<std::string> starts;
+    auto starts = std::vector<std::string>();
     for (auto&& [k, v] : idToNext)
         if (k.back() == 'A')
             starts.push_back(k);
 
-    std::vector<int64_t> steps;
+    auto steps = std::vector<int64_t>();
     for (auto&& s : starts)
         steps.push_back(follow_map(s));
 

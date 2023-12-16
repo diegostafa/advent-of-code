@@ -10,11 +10,10 @@ main()
 
     auto split_numbers = [](const auto& v)
     {
-        auto sx = aoc_utils::split_string(v[0], " ");
-        auto dx = aoc_utils::split_string(v[1], " ");
-
-        std::vector<int> vsx;
-        std::vector<int> vdx;
+        auto sx  = aoc_utils::split_string(v[0], " ");
+        auto dx  = aoc_utils::split_string(v[1], " ");
+        auto vsx = std::vector<int>();
+        auto vdx = std::vector<int>();
 
         vsx.reserve(sx.size());
         vdx.reserve(dx.size());
@@ -35,7 +34,7 @@ main()
         std::views::transform(split_sets) |
         std::views::transform(split_numbers);
 
-    std::vector<int> matches(games.size());
+    auto matches = std::vector<int>(games.size());
 
     for (int i = 0; i < games.size(); ++i)
         for (auto&& hand_val : games[i].second)

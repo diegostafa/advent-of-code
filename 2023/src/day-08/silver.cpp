@@ -4,8 +4,7 @@
 int
 main()
 {
-    std::unordered_map<std::string, std::pair<std::string, std::string>> idToNext;
-
+    auto idToNext   = std::unordered_map<std::string, std::pair<std::string, std::string>>();
     auto parse_line = [&idToNext](const auto& s)
     {
         auto split = aoc_utils::split_string(s, " = ");

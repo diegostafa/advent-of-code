@@ -9,11 +9,10 @@ main()
 
     auto split_numbers = [](const auto& v)
     {
-        auto sx = aoc_utils::split_string(v[0], " ");
-        auto dx = aoc_utils::split_string(v[1], " ");
-
-        std::vector<int> vsx;
-        std::vector<int> vdx;
+        auto sx  = aoc_utils::split_string(v[0], " ");
+        auto dx  = aoc_utils::split_string(v[1], " ");
+        auto vsx = std::vector<int>();
+        auto vdx = std::vector<int>();
 
         vsx.reserve(sx.size());
         vdx.reserve(dx.size());
@@ -29,13 +28,12 @@ main()
         return std::make_pair(vsx, vdx);
     };
 
-    auto games =
-        aoc_utils::read_file_lines("src/day-04/input.txt") |
-        std::views::transform(split_sets) |
-        std::views::transform(split_numbers);
+    auto games = aoc_utils::read_file_lines("src/day-04/input.txt") |
+                 std::views::transform(split_sets) |
+                 std::views::transform(split_numbers);
 
-    std::vector<int> matches(games.size());
-    std::vector<int> copies(games.size(), 1);
+    auto matches = std::vector<int>(games.size());
+    auto copies  = std::vector<int>(games.size(), 1);
 
     for (int i = 0; i < games.size(); ++i)
         for (auto&& hand_val : games[i].second)

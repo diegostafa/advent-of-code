@@ -82,7 +82,6 @@ main()
         flood(grid, {i, 0});
 
     for (int i = 0; i < grid.size(); i++)
-
         flood(grid, {i, grid[0].size() - 1});
 
     for (int i = 0; i < grid[0].size(); i++)

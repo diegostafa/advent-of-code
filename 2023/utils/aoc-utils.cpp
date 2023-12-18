@@ -1,3 +1,4 @@
+#include <chrono>
 #include <fstream>
 #include <functional>
 #include <iostream>
@@ -5,12 +6,46 @@
 #include <ranges>
 #include <sstream>
 #include <string>
+#include <thread>
 #include <vector>
 
 namespace aoc_utils
 {
+    void
+    print_grid(const auto& grid, auto milli, bool clear)
+    {
+        for (int i = 0; i < grid.size(); i++)
+        {
+            for (int j = 0; j < grid[0].size(); j++)
+                std::cout << grid[i][j];
+            std::cout << "\n";
+        }
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(milli));
+        if (clear)
+            system("clear");
+    }
+
+    auto
+    manh_distance(const auto& a, const auto& b)
+    {
+        return std::abs(b.first - a.first) + std::abs(b.second - a.second);
+    }
+
+    std::pair<int, int>
+    sum_pair(const std::pair<int, int>& p1, const std::pair<int, int>& p2)
+    {
+        return std::make_pair(p1.first + p2.first, p1.second + p2.second);
+    }
+
+    std::pair<int, int>
+    sub_pair(const std::pair<int, int>& p1, const std::pair<int, int>& p2)
+    {
+        return std::make_pair(p1.first - p2.first, p1.second - p2.second);
+    }
+
     bool
-    in_bound(const auto& grid, const auto& pos)
+    in_bound(const auto& grid, const std::pair<int, int>& pos)
     {
         auto [x, y] = pos;
         return x >= 0 && x < grid.size() && y >= 0 && y < grid[0].size();

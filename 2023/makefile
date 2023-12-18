@@ -1,5 +1,5 @@
 backend?=g++
-flags=-std=c++20 -O3 -march=native
+flags=-std=c++20 -O3 -march=native -pthread
 buildDir=build
 exe=a.out
 

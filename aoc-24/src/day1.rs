@@ -21,7 +21,7 @@ pub fn part1(input: &Input) -> i32 {
         .iter()
         .sorted_by(|a, b| a.cmp(b))
         .zip(input.1.iter().sorted_by(|a, b| a.cmp(b)))
-        .map(|(a, b)| (a - b).unsigned_abs() as i32)
+        .map(|(a, b)| (a - b).abs())
         .sum()
 }
 

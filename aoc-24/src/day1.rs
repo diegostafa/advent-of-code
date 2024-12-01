@@ -5,12 +5,9 @@ type Input = (Vec<i32>, Vec<i32>);
 pub fn input_generator(input: &str) -> Input {
     input
         .lines()
-        .map(|line| line.split_whitespace().collect_vec())
-        .map(|split| {
-            (
-                split[0].parse::<i32>().unwrap(),
-                split[1].parse::<i32>().unwrap(),
-            )
+        .map(|line| {
+            let mut x = line.split_whitespace().flat_map(str::parse::<i32>);
+            (x.next().unwrap(), x.next().unwrap())
         })
         .unzip()
 }

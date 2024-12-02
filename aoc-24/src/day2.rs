@@ -7,7 +7,8 @@ pub fn input_generator(input: &str) -> Input {
         .lines()
         .map(|line| {
             line.split_whitespace()
-                .map(|s| s.parse().unwrap())
+                .map(str::parse)
+                .map(Result::unwrap)
                 .collect_vec()
         })
         .collect_vec()

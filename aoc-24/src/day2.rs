@@ -33,10 +33,10 @@ fn is_almost_safe(v: &[i32], asc: bool, ignore: Option<usize>) -> bool {
                 .collect_vec(),
         );
     }
-    for i in 1..v.len() {
+    for i in 1..v.len() - 1 {
         let x1 = v[i - 1];
         let x2 = v[i];
-        if (asc && x2 < x1) || (!asc && x2 > x1) || !(1..=3).contains(&(x2 - x1).abs()) {
+        if (asc && x2 <= x1) || (!asc && x2 >= x1) || !(1..=3).contains(&(x2 - x1).abs()) {
             return is_almost_safe(v, asc, Some(i - 1))
                 || is_almost_safe(v, asc, Some(i))
                 || is_almost_safe(v, asc, Some(i + 1));

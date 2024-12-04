@@ -60,12 +60,8 @@ pub fn part1(input: &Input) -> usize {
 }
 
 fn check_x_mas(grid: &Vec<Vec<char>>, i: usize, j: usize) -> bool {
-    let tl = grid[i - 1][j - 1];
-    let tr = grid[i - 1][j + 1];
-    let bl = grid[i + 1][j - 1];
-    let br = grid[i + 1][j + 1];
-    let tlbr = [tl, br].iter().join("");
-    let trbl = [tr, bl].iter().join("");
+    let tlbr = [grid[i - 1][j - 1], grid[i + 1][j + 1]].iter().join("");
+    let trbl = [grid[i - 1][j + 1], grid[i + 1][j - 1]].iter().join("");
     (tlbr == "SM" || tlbr == "MS") && (trbl == "SM" || trbl == "MS")
 }
 

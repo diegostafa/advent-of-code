@@ -27,13 +27,16 @@ impl Direction {
             Direction::Left => Direction::Up,
         }
     }
-    fn from_char(c: char) -> Option<Self> {
-        match c {
-            '>' => Some(Direction::Right),
-            'v' => Some(Direction::Down),
-            '<' => Some(Direction::Left),
-            '^' => Some(Direction::Up),
-            _ => None,
+}
+impl TryFrom<char> for Direction {
+    type Error = ();
+    fn try_from(value: char) -> Result<Self, Self::Error> {
+        match value {
+            '>' => Ok(Direction::Right),
+            'v' => Ok(Direction::Down),
+            '<' => Ok(Direction::Left),
+            '^' => Ok(Direction::Up),
+            _ => Err(()),
         }
     }
 }
@@ -67,9 +70,7 @@ pub fn input_generator(input: &str) -> Input {
     let mut device = Device::default();
     for i in 0..grid.w() {
         for j in 0..grid.h() {
-            let c = grid[(i, j)];
-            let dir = Direction::from_char(c);
-            if let Some(dir) = dir {
+            if let Ok(dir) = Direction::try_from(grid[(i, j)]) {
                 device.dir = dir;
                 device.pos = (i, j);
                 return (grid, device);

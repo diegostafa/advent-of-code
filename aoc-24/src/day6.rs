@@ -37,13 +37,13 @@ impl Direction {
         }
     }
 }
+
 #[derive(Default, Clone)]
 pub struct Device {
     pos: (usize, usize),
     dir: Direction,
     is_out: bool,
 }
-
 impl Device {
     fn make_step(&mut self, grid: &Grid<char>) {
         let (x, y) = self.pos;

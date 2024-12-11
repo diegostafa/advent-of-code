@@ -1,6 +1,6 @@
 #[allow(unused_imports)]
 use super::prelude::*;
-type Input = VecDeque<u64>;
+type Input = Vec<u64>;
 
 pub fn input_generator(input: &str) -> Input {
     input

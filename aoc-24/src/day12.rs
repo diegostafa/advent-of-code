@@ -3,6 +3,25 @@ use super::prelude::*;
 type Input = Grid<char>;
 type Region = HashSet<(usize, usize)>;
 
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
+enum Dir {
+    U,
+    D,
+    L,
+    R,
+}
+impl Dir {
+    fn from_coord((x, y): (isize, isize)) -> Dir {
+        match (x, y) {
+            (0, -1) => Dir::U,
+            (0, 1) => Dir::D,
+            (-1, 0) => Dir::L,
+            (1, 0) => Dir::R,
+            _ => panic!("Invalid direction"),
+        }
+    }
+}
+
 fn find_regions(input: &Input) -> Vec<(char, Region)> {
     fn find_region(grid: &Grid<char>, c: char, pos: (usize, usize), region: &mut Region) {
         if !region.contains(&pos) && grid[pos] == c {
@@ -76,25 +95,6 @@ fn sides_of(grid: &Grid<char>, region: &Region) -> usize {
     let l = sides_of_dir(&border, Dir::L);
     let r = sides_of_dir(&border, Dir::R);
     u + d + l + r
-}
-
-#[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
-enum Dir {
-    U,
-    D,
-    L,
-    R,
-}
-impl Dir {
-    fn from_coord((x, y): (isize, isize)) -> Dir {
-        match (x, y) {
-            (0, -1) => Dir::U,
-            (0, 1) => Dir::D,
-            (-1, 0) => Dir::L,
-            (1, 0) => Dir::R,
-            _ => panic!("Invalid direction"),
-        }
-    }
 }
 
 fn sides_of_dir(border: &HashSet<((isize, isize), Dir)>, dir: Dir) -> usize {

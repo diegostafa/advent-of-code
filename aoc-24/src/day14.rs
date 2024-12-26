@@ -1,9 +1,27 @@
 #[allow(unused_imports)]
 use super::prelude::*;
 
-type Area = (i32, i32);
+const W: i32 = 101;
+const H: i32 = 103;
+
 type Device = ((i32, i32), (i32, i32));
 type Input = Vec<Device>;
+
+fn move_device(((x, y), (dx, dy)): &mut Device) {
+    *x += *dx;
+    *y += *dy;
+
+    if *x < 0 {
+        *x += W
+    } else if *x >= W {
+        *x -= W
+    }
+    if *y < 0 {
+        *y += H
+    } else if *y >= H {
+        *y -= H
+    }
+}
 
 pub fn input_generator(input: &str) -> Input {
     input
@@ -22,31 +40,12 @@ pub fn input_generator(input: &str) -> Input {
         .collect()
 }
 
-fn make_step(((x, y), (dx, dy)): &mut Device, (w, h): Area) {
-    *x += *dx;
-    *y += *dy;
-
-    if *x < 0 {
-        *x += w
-    } else if *x >= w {
-        *x -= w
-    }
-    if *y < 0 {
-        *y += h
-    } else if *y >= h {
-        *y -= h
-    }
-}
-
 pub fn part1(input: &Input) -> usize {
-    let (w, h) = (101, 103);
     let devices: Vec<_> = input
         .clone()
         .into_par_iter()
         .map(|mut d| {
-            for _ in 0..100 {
-                make_step(&mut d, (w, h))
-            }
+            (0..100).for_each(|_| move_device(&mut d));
             d
         })
         .collect();
@@ -56,13 +55,13 @@ pub fn part1(input: &Input) -> usize {
     let mut c = 0;
     let mut d = 0;
     for ((x, y), _) in devices {
-        if x < w / 2 && y < h / 2 {
+        if x < W / 2 && y < H / 2 {
             a += 1;
-        } else if x < w / 2 && y > h / 2 {
+        } else if x < W / 2 && y > H / 2 {
             b += 1;
-        } else if x > w / 2 && y < h / 2 {
+        } else if x > W / 2 && y < H / 2 {
             c += 1;
-        } else if x > w / 2 && y > h / 2 {
+        } else if x > W / 2 && y > H / 2 {
             d += 1;
         }
     }
@@ -70,19 +69,37 @@ pub fn part1(input: &Input) -> usize {
 }
 
 pub fn part2(input: &Input) -> usize {
-    let (w, h) = (101, 103);
+    fn move_devices(devices: &mut [Device]) {
+        devices.iter_mut().for_each(move_device)
+    }
+    fn is_possible_tree(((x1, y1), _): &Device, devices: &[Device]) -> bool {
+        let positions = devices.iter().map(|((x, y), _)| (*x, *y)).collect_vec();
+        let adjacents = [
+            (0, 1),
+            (1, 0),
+            (0, -1),
+            (-1, 0),
+            (1, 1),
+            (1, -1),
+            (-1, 1),
+            (-1, -1),
+        ]
+        .map(|d| (*x1 + d.0, *y1 + d.1));
+        for adj in adjacents {
+            if !positions.contains(&adj) {
+                return false;
+            }
+        }
+        true
+    }
+
     let mut devices = input.clone();
     let mut i = 0;
-
-    while false {
-        devices = devices
-            .into_par_iter()
-            .map(|mut d| {
-                make_step(&mut d, (w, h));
-                d
-            })
-            .collect();
+    loop {
+        if devices.iter().any(|d| is_possible_tree(d, &devices)) {
+            break i;
+        }
+        move_devices(&mut devices);
         i += 1;
     }
-    i
 }

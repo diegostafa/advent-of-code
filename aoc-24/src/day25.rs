@@ -39,6 +39,6 @@ pub fn part1((keys, locks): &Input) -> usize {
     fits
 }
 
-pub fn part2(input: &Input) -> usize {
+pub fn _part2(_input: &Input) -> usize {
     0
 }

@@ -1,3 +1,5 @@
+#![feature(ascii_char)]
+
 aoc_helper::main!(2025 =>
     day1,
     day2,
@@ -8,7 +10,7 @@ aoc_helper::main!(2025 =>
     day7,
     day8,
     day9,
-    // day10,
+    day10,
     // day11,
     // day12,
     // day13,
